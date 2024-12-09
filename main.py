@@ -40,7 +40,19 @@ def calculate_rot(text, rot, direction):
 
 if __name__ == "__main__":
     text = str(input("Enter a text: "))
-    rot = int(input("Enter number of rotations: "))
+
+    while True:
+        rot_input = input("Enter number of rotations: ")
+        
+        try:
+            rot = (int(rot_input))
+            if rot >= 0:
+                break
+            else:
+                print("Invalid Input: Enter a non-negative integer")
+        except ValueError:
+            print("Invalid input: Enter a non-negative integer")
+
 
     while True:
         print("Choose rotation direction: ")
