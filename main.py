@@ -4,8 +4,8 @@
 
 def calculate_rot(text, rot, direction):
     new_text = []
-    # 26 letters in the english allphabet
-    rot = rot%26
+    
+    rot = rot%26 # 26 letters in the english allphabet
 
     for c in text:
 
@@ -17,20 +17,18 @@ def calculate_rot(text, rot, direction):
 
             z_val = a_val + 26 - 1            
 
-            if direction == 'a':
-                c = ord(c) + rot # get decimal value
-            else:
-                c = ord(c) - rot # get decimal value
+            # get shifted decimal value
+            c = ord(c) + rot if direction == 'a' else ord(c) - rot 
             
             # for out of bounds, (1) get the difference of the excess
             if c < a_val:
                 c = z_val - (a_val - c) + 1  # (2) subtract from z_val to go backwards 
-                                            # add one to count Z_val
+                                             # add one to count Z_val
             if c > z_val:
                 c = a_val + (c - z_val) - 1  # (2) add to a_val to go forward
-                                            # minus one to count a_val
+                                             # minus one to count a_val
             
-            c = chr(c)       # get ascii value
+            c = chr(c)                       # get ascii value
 
         new_text.append(c)
         
@@ -67,5 +65,3 @@ if __name__ == "__main__":
 
     output = calculate_rot(text, rot, direction)
     print(output)
-    
-
