@@ -12,11 +12,10 @@ def calculate_rot(text, rot, direction):
         if 97 <= ord(c) <= 122 or 65 <= ord(c) <= 90:
             if 97 <= ord(c) <= 122:
                 a_val = 97
-                z_val = 122
             if 65 <= ord(c) <= 90:
                 a_val = 65
-                z_val = 90
-            
+
+            z_val = a_val + 26 - 1            
 
             if direction == 'a':
                 c = ord(c) + rot # get decimal value
@@ -36,7 +35,8 @@ def calculate_rot(text, rot, direction):
         new_text.append(c)
         
     new_text = ''.join(new_text)
-    print(new_text)
+
+    return new_text
 
 if __name__ == "__main__":
     text = str(input("Enter a text: "))
@@ -65,6 +65,7 @@ if __name__ == "__main__":
         else:
             print("Invalid input")
 
-    calculate_rot(text, rot, direction)
+    output = calculate_rot(text, rot, direction)
+    print(output)
     
 
